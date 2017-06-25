@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.springmvc.mapper.ItemMapper">
+	<select id="findItemList" resultType="Item">
+		select * from items
+	</select>
+	
+	<select id="findItemById" parameterType="Integer" resultType="Item">
+		select * from items where id = #{vv}
+	</select>
+	
+	<update id="updateItemById" parameterType="Item">
+		update items 
+			<set>
+				<if test="name!=null and name!=''">
+					name=#{name},				
+				</if>
+				<if test="price!=null">
+					price = #{price},
+				</if>
+				<if test="createtime!=null and createtime!=''">
+					createtime = #{createtime},
+				</if>
+				<if test="detail!=null and detail !=''">
+					detail =#{detail},
+				</if>
+				<if test="pic!=null and pic !=''">
+					pic =#{pic}
+				</if>
+				
+			</set>
+			<where>
+				id = #{id}
+			</where>
+	</update>
+</mapper>
