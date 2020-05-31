@@ -17,7 +17,7 @@ public class MyException extends Exception{
 	public MyException() {
 		super();
 	}
-	
+	public class MyException(){}
 	
 	
 }
